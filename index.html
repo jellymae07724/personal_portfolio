@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JELLY MAE V. LOPEZ - Cyberpunk Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            overflow-x: hidden;
+            color: #00ffff;
+        }
+        
+        .orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        /* Neon Cyberpunk Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(rgba(255, 0, 128, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 128, 0.2) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+            background-position: 0 0, 0 0, 25px 25px, 25px 25px;
+            animation: neonGridMove 25s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+        }
+        
+        @keyframes neonGridMove {
+            0% { 
+                transform: translate(0, 0);
+                filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+            }
+            25% { 
+                filter: drop-shadow(0 0 15px rgba(255, 0, 128, 0.6));
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.4));
+            }
+            75% { 
+                filter: drop-shadow(0 0 12px rgba(255, 255, 0, 0.5));
+            }
+            100% { 
+                transform: translate(50px, 50px);
+                filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+            }
+        }
+        
+        /* Holographic Effects */
+        .hologram {
+            position: relative;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            border: 1px solid #00ffff;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.3),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .hologram::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: scan 3s infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Neon Text Effects */
+        .neon-text {
+            color: #00ffff;
+            text-shadow: 
+                0 0 5px #00ffff,
+                0 0 10px #00ffff,
+                0 0 15px #00ffff,
+                0 0 20px #00ffff;
+            animation: neonFlicker 2s infinite alternate;
+        }
+        
+        @keyframes neonFlicker {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    0 0 15px #00ffff,
+                    0 0 20px #00ffff;
+            }
+            50% { 
+                text-shadow: 
+                    0 0 2px #00ffff,
+                    0 0 5px #00ffff,
+                    0 0 8px #00ffff,
+                    0 0 12px #00ffff;
+            }
+        }
+        
+        /* Hero Name Glow Effect */
+        .hero-name {
+            font-size: clamp(3rem, 8vw, 12rem);
+            background: linear-gradient(45deg, #00ffff, #ff0080, #00ff00, #ffff00, #ff0080, #00ffff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: heroGlow 4s ease-in-out infinite, gradientShift 8s ease infinite;
+            text-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.8),
+                0 0 60px rgba(255, 0, 128, 0.6),
+                0 0 90px rgba(0, 255, 0, 0.4);
+            filter: drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px #ff0080);
+        }
+        
+        @keyframes heroGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px #ff0080) brightness(1);
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 40px #00ffff) drop-shadow(0 0 80px #ff0080) brightness(1.2);
+                transform: scale(1.02);
+            }
+        }
+        
+        /* Neon Galaxy Background */
+        .galaxy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.4) 0%, rgba(0, 255, 255, 0.1) 30%, transparent 60%),
+                radial-gradient(ellipse at 80% 10%, rgba(255, 0, 128, 0.5) 0%, rgba(255, 0, 128, 0.2) 25%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(0, 255, 0, 0.3) 0%, rgba(0, 255, 0, 0.1) 35%, transparent 65%),
+                radial-gradient(ellipse at 60% 30%, rgba(255, 255, 0, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 10% 90%, rgba(128, 0, 255, 0.4) 0%, transparent 45%),
+                linear-gradient(135deg, #001122 0%, #003366 15%, #001a33 30%, #002244 45%, #000d1a 60%, #001133 75%, #000 100%);
+            animation: neonGalaxyMove 15s ease-in-out infinite;
+        }
+        
+        @keyframes neonGalaxyMove {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+                filter: brightness(1) saturate(1.2);
+            }
+            25% { 
+                transform: rotate(0.5deg) scale(1.02);
+                filter: brightness(1.1) saturate(1.4);
+            }
+            50% { 
+                transform: rotate(-0.3deg) scale(0.98);
+                filter: brightness(1.2) saturate(1.6);
+            }
+            75% { 
+                transform: rotate(0.8deg) scale(1.01);
+                filter: brightness(1.05) saturate(1.3);
+            }
+        }
+        
+        /* Neon Glitch Effect for Background */
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(45deg, transparent 48%, rgba(0, 255, 255, 0.1) 49%, rgba(0, 255, 255, 0.1) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(255, 0, 128, 0.08) 49%, rgba(255, 0, 128, 0.08) 51%, transparent 52%);
+            animation: neonGlitchBg 4s infinite;
+            filter: blur(0.5px);
+        }
+        
+        @keyframes neonGlitchBg {
+            0%, 85%, 100% { 
+                opacity: 0; 
+                filter: blur(0.5px) hue-rotate(0deg);
+            }
+            3% { 
+                opacity: 1; 
+                transform: translateX(3px) skewX(2deg);
+                filter: blur(0.5px) hue-rotate(90deg);
+            }
+            6% { 
+                opacity: 1; 
+                transform: translateX(-3px) skewX(-1deg);
+                filter: blur(0.5px) hue-rotate(180deg);
+            }
+            9% { 
+                opacity: 1; 
+                transform: translateX(2px) skewX(1deg);
+                filter: blur(0.5px) hue-rotate(270deg);
+            }
+            12% { 
+                opacity: 0;
+                filter: blur(0.5px) hue-rotate(360deg);
+            }
+        }
+        
+        /* Digital Interface Elements */
+        .digital-border {
+            position: relative;
+            border: 2px solid #00ffff;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .digital-border::before,
+        .digital-border::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff0080;
+        }
+        
+        .digital-border::before {
+            top: -2px;
+            left: -2px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .digital-border::after {
+            bottom: -2px;
+            right: -2px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        /* Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: neonFloat 8s infinite linear;
+            box-shadow: 
+                0 0 6px #00ffff,
+                0 0 12px #00ffff,
+                0 0 18px #00ffff;
+        }
+        
+        .particle:nth-child(2n) {
+            background: #ff0080;
+            box-shadow: 
+                0 0 6px #ff0080,
+                0 0 12px #ff0080,
+                0 0 18px #ff0080;
+        }
+        
+        .particle:nth-child(3n) {
+            background: #00ff00;
+            box-shadow: 
+                0 0 6px #00ff00,
+                0 0 12px #00ff00,
+                0 0 18px #00ff00;
+        }
+        
+        .particle:nth-child(4n) {
+            background: #ffff00;
+            box-shadow: 
+                0 0 6px #ffff00,
+                0 0 12px #ffff00,
+                0 0 18px #ffff00;
+        }
+        
+        @keyframes neonFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+                transform: translateY(95vh) rotate(18deg) scale(1);
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.2);
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+                transform: translateY(5vh) rotate(342deg) scale(0.8);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* HUD Elements */
+        .hud-element {
+            border: 1px solid #00ffff;
+            background: rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hud-element::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: scanline 2s infinite;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Progress Bars */
+        .cyber-progress {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ffff;
+            height: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0080, #00ffff, #ff0080);
+            background-size: 200% 100%;
+            animation: progressGlow 2s infinite;
+            position: relative;
+        }
+        
+        @keyframes progressGlow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Hover Effects */
+        .cyber-button {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-button:hover {
+            color: #000;
+            box-shadow: 0 0 30px #00ffff;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #00ffff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cyber-button:hover::before {
+            left: 0;
+        }
+        
+        /* Terminal Window */
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ffff;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 255, 0.03) 2px,
+                rgba(0, 255, 255, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+        
+        /* Data Stream */
+        .data-stream {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+            animation: dataFlow 3s infinite;
+            z-index: 1000;
+        }
+        
+        @keyframes dataFlow {
+            0% { opacity: 0; transform: translateY(-50%) scaleY(0); }
+            50% { opacity: 1; transform: translateY(-50%) scaleY(1); }
+            100% { opacity: 0; transform: translateY(-50%) scaleY(0); }
+        }
+        
+        /* Responsive Design */
+        /* Floating Profile Card */
+        .floating-profile {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 255, 0.4),
+                inset 0 0 50px rgba(0, 255, 255, 0.1);
+            animation: profileFloat 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-profile::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff0080, #00ff00, #ffff00);
+            background-size: 400% 400%;
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 4s ease infinite;
+        }
+        
+        @keyframes profileFloat {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-15px) rotateY(2deg); }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Hologram Photo Frame */
+        .hologram-frame {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #00ffff;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1));
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.6),
+                inset 0 0 30px rgba(0, 255, 255, 0.2);
+            animation: hologramSpin 10s linear infinite;
+        }
+        
+        .hologram-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+            animation: hologramScan 3s linear infinite;
+        }
+        
+        .hologram-frame::after {
+            content: 'INSERT PHOTO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(0, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes hologramSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes hologramScan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .cyber-grid {
+                background-size: 25px 25px;
+            }
+            
+            .data-stream {
+                display: none;
+            }
+            
+            .hologram-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: loading 2s infinite;
+        }
+        
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Galaxy Background -->
+    <div class="galaxy-bg"></div>
+    
+    <!-- Glitch Background -->
+    <div class="glitch-bg"></div>
+    
+    <!-- Cyberpunk Grid Background -->
+    <div class="cyber-grid"></div>
+    
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Data Stream -->
+    <div class="data-stream"></div>
+    
+    <!-- Navigation HUD -->
+    <nav class="fixed top-0 w-full z-50 hud-element">
+        <div class="loading-bar"></div>
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="orbitron text-2xl font-bold neon-text glitch">
+                    &gt; JELLY_MAE.EXE
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-white transition-colors">[HOME]</a>
+                    <a href="#about" class="hover:text-white transition-colors">[ABOUT]</a>
+                    <a href="#skills" class="hover:text-white transition-colors">[SKILLS]</a>
+                    <a href="#projects" class="hover:text-white transition-colors">[PROJECTS]</a>
+                    <a href="#contact" class="hover:text-white transition-colors">[CONTACT]</a>
+                </div>
+                <div class="text-sm">
+                    <span class="text-green-400">ONLINE</span> | 
+                    <span id="clock"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="text-center z-10 w-full px-4">
+            <!-- Massive Name with Futuristic Glow -->
+            <div class="mb-8">
+                <div class="orbitron hero-name font-black mb-6 leading-none">
+                    JELLY MAE V. LOPEZ
+                </div>
+                <div class="text-3xl md:text-5xl mb-8 neon-text">
+                    PROGRAMMER & SOFTWARE ANALYST
+                </div>
+                <div class="text-xl md:text-2xl mb-8 text-pink-400">
+                    <span id="typewriter" class="border-r-2 border-cyan-400"></span>
+                </div>
+            </div>
+            
+            <!-- Status Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto">
+                <div class="digital-border p-4">
+                    <div class="text-green-400 text-sm">STATUS:</div>
+                    <div class="font-bold">AVAILABLE</div>
+                </div>
+                <div class="digital-border p-4">
+                    <div class="text-yellow-400 text-sm">LEVEL:</div>
+                    <div class="font-bold">EXPERT</div>
+                </div>
+                <div class="digital-border p-4">
+                    <div class="text-red-400 text-sm">MODE:</div>
+                    <div class="font-bold">CREATIVE</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <button onclick="scrollToSection('projects')" class="cyber-button px-8 py-4 rounded font-semibold">
+                    [INITIALIZE_PROJECTS]
+                </button>
+                <button onclick="scrollToSection('contact')" class="cyber-button px-8 py-4 rounded font-semibold">
+                    [ESTABLISH_CONNECTION]
+                </button>
+            </div>
+        </div>
+        
+        <!-- Floating HUD Elements -->
+        <div class="absolute top-20 left-10 hud-element p-4 rounded hidden md:block">
+            <div class="text-xs text-green-400">SYSTEM_STATUS</div>
+            <div class="text-sm">ALL_SYSTEMS_OPERATIONAL</div>
+        </div>
+        
+        <div class="absolute bottom-20 right-10 hud-element p-4 rounded hidden md:block">
+            <div class="text-xs text-yellow-400">NEURAL_LINK</div>
+            <div class="text-sm">CONNECTED</div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="orbitron text-4xl md:text-6xl font-bold text-center mb-16 neon-text">
+                &gt; ABOUT_MODULE.INIT()
+            </h2>
+            
+            <div class="grid lg:grid-cols-3 gap-12 items-start">
+                <!-- Floating Profile Card -->
+                <div class="floating-profile p-8 text-center">
+                    <!-- Hologram Photo Frame -->
+                    <div class="hologram-frame mx-auto mb-6"></div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">JELLY MAE V. LOPEZ</h3>
+                    <div class="text-pink-400 mb-6">CYBERNETIC DEVELOPER</div>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">NEURAL_ID:</span>
+                            <span class="text-green-400">JML_2024</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">ACCESS_LEVEL:</span>
+                            <span class="text-yellow-400">ADMIN</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">STATUS:</span>
+                            <span class="text-green-400">ONLINE</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">LOCATION:</span>
+                            <span class="text-cyan-400">CYBERSPACE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-2 gap-3">
+                        <div class="digital-border p-3 text-center">
+                            <div class="text-xl font-bold text-cyan-400">100+</div>
+                            <div class="text-xs">PROJECTS</div>
+                        </div>
+                        <div class="digital-border p-3 text-center">
+                            <div class="text-xl font-bold text-pink-400">5+</div>
+                            <div class="text-xs">YEARS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Terminal -->
+                <div class="terminal p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <span class="ml-4 text-cyan-400">root@jelly-system:~$</span>
+                    </div>
+                    <div class="text-green-400 space-y-2 text-sm">
+                        <p>&gt; cat /user/profile.json</p>
+                        <div class="text-white ml-4">
+                            <p>{</p>
+                            <p class="ml-4">"name": "Jelly Mae V. Lopez",</p>
+                            <p class="ml-4">"role": "Cybernetic Developer",</p>
+                            <p class="ml-4">"specialization": ["AI", "Data", "Web"],</p>
+                            <p class="ml-4">"status": "Online",</p>
+                            <p class="ml-4">"mission": "Digital Innovation"</p>
+                            <p>}</p>
+                        </div>
+                        <p>&gt; execute personality.exe</p>
+                        <p class="text-cyan-400">Loading neural patterns...</p>
+                        <p>&gt; scan capabilities.db</p>
+                        <div class="text-white ml-4">
+                            <p>✓ Full-Stack Development</p>
+                            <p>✓ AI/Machine Learning</p>
+                            <p>✓ Data Analysis</p>
+                            <p>✓ Cybersecurity</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Description -->
+                <div class="hologram p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-pink-400">[NEURAL_PROFILE]</h3>
+                    <p class="text-lg mb-4 leading-relaxed">
+                        Interface established. I am a cybernetic developer specializing in advanced digital architectures. 
+                        My neural pathways are optimized for full-stack development, data analysis, and AI integration.
+                    </p>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Operating in the intersection of human creativity and machine precision, I architect solutions 
+                        that push the boundaries of what's possible in the digital realm.
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <div class="digital-border p-3">
+                            <div class="text-cyan-400 font-bold">CORE_DIRECTIVE:</div>
+                            <div class="text-sm">Transform ideas into innovative digital solutions</div>
+                        </div>
+                        <div class="digital-border p-3">
+                            <div class="text-pink-400 font-bold">MISSION_STATUS:</div>
+                            <div class="text-sm">Actively seeking new challenges and collaborations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="orbitron text-4xl md:text-6xl font-bold text-center mb-16 neon-text">
+                &gt; SKILL_MATRIX.LOAD()
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="hologram p-6 rounded-lg text-center">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-4 text-cyan-400">[NEURAL_NETWORKS]</h3>
+                    <p class="text-gray-300">AI • Machine Learning • Deep Learning • TensorFlow</p>
+                </div>
+                <div class="hologram p-6 rounded-lg text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-4 text-pink-400">[QUANTUM_CODE]</h3>
+                    <p class="text-gray-300">React • Vue • Angular • Node.js • Python</p>
+                </div>
+                <div class="hologram p-6 rounded-lg text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">[DATA_STREAMS]</h3>
+                    <p class="text-gray-300">Big Data • Analytics • Visualization • SQL</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="hud-element p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">[CORE_SYSTEMS]</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript/TypeScript</span>
+                                <span class="text-green-400">98%</span>
+                            </div>
+                            <div class="cyber-progress">
+                                <div class="cyber-progress-fill" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Python/AI</span>
+                                <span class="text-green-400">95%</span>
+                            </div>
+                            <div class="cyber-progress">
+                                <div class="cyber-progress-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>React/Vue</span>
+                                <span class="text-green-400">92%</span>
+                            </div>
+                            <div class="cyber-progress">
+                                <div class="cyber-progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Data Analysis</span>
+                                <span class="text-green-400">90%</span>
+                            </div>
+                            <div class="cyber-progress">
+                                <div class="cyber-progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hud-element p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-pink-400">[TECH_ARSENAL]</h3>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">⚛️</div>
+                            <div class="text-xs">REACT</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">🐍</div>
+                            <div class="text-xs">PYTHON</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">🧠</div>
+                            <div class="text-xs">AI/ML</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">🗄️</div>
+                            <div class="text-xs">DATABASE</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">☁️</div>
+                            <div class="text-xs">CLOUD</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">🐳</div>
+                            <div class="text-xs">DOCKER</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">🔧</div>
+                            <div class="text-xs">NODE.JS</div>
+                        </div>
+                        <div class="digital-border p-3 text-center hover:bg-cyan-900 transition-colors cursor-pointer">
+                            <div class="text-2xl mb-2">📱</div>
+                            <div class="text-xs">MOBILE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="orbitron text-4xl md:text-6xl font-bold text-center mb-16 neon-text">
+                &gt; PROJECT_ARCHIVE.ACCESS()
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🤖</div>
+                        <div class="text-xs text-green-400">[ACTIVE]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-cyan-400">NEURAL_ANALYTICS_V2.0</h3>
+                    <p class="text-gray-300 mb-4">Advanced AI-powered analytics platform with real-time neural network processing and predictive modeling capabilities.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-900 border border-blue-400 rounded text-xs">PYTHON</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">TENSORFLOW</span>
+                        <span class="px-2 py-1 bg-purple-900 border border-purple-400 rounded text-xs">REACT</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-cyan-400 hover:text-white transition-colors">[DEMO]</button>
+                        <button class="text-pink-400 hover:text-white transition-colors">[SOURCE]</button>
+                    </div>
+                </div>
+                
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🌐</div>
+                        <div class="text-xs text-yellow-400">[DEPLOYED]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-pink-400">QUANTUM_COMMERCE</h3>
+                    <p class="text-gray-300 mb-4">Next-generation e-commerce platform with blockchain integration, AR product visualization, and AI-driven recommendations.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-900 border border-blue-400 rounded text-xs">NEXT.JS</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">BLOCKCHAIN</span>
+                        <span class="px-2 py-1 bg-yellow-900 border border-yellow-400 rounded text-xs">AR/VR</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-cyan-400 hover:text-white transition-colors">[DEMO]</button>
+                        <button class="text-pink-400 hover:text-white transition-colors">[SOURCE]</button>
+                    </div>
+                </div>
+                
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🔮</div>
+                        <div class="text-xs text-blue-400">[BETA]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">HOLOGRAPHIC_UI</h3>
+                    <p class="text-gray-300 mb-4">Revolutionary 3D holographic user interface system with gesture recognition and spatial computing integration.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-900 border border-blue-400 rounded text-xs">THREE.JS</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">WEBXR</span>
+                        <span class="px-2 py-1 bg-purple-900 border border-purple-400 rounded text-xs">AI</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-cyan-400 hover:text-white transition-colors">[DEMO]</button>
+                        <button class="text-pink-400 hover:text-white transition-colors">[SOURCE]</button>
+                    </div>
+                </div>
+                
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🛡️</div>
+                        <div class="text-xs text-red-400">[CLASSIFIED]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-red-400">CYBER_DEFENSE_GRID</h3>
+                    <p class="text-gray-300 mb-4">Advanced cybersecurity platform with AI-powered threat detection, quantum encryption, and real-time defense protocols.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-red-900 border border-red-400 rounded text-xs">SECURITY</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">QUANTUM</span>
+                        <span class="px-2 py-1 bg-purple-900 border border-purple-400 rounded text-xs">AI</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-gray-500">[RESTRICTED]</button>
+                        <button class="text-gray-500">[CLASSIFIED]</button>
+                    </div>
+                </div>
+                
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🚀</div>
+                        <div class="text-xs text-purple-400">[LAUNCHING]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-purple-400">SPACE_DATA_NEXUS</h3>
+                    <p class="text-gray-300 mb-4">Interplanetary data processing system for space missions with satellite communication and deep space analytics.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-900 border border-blue-400 rounded text-xs">PYTHON</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">SATELLITE</span>
+                        <span class="px-2 py-1 bg-yellow-900 border border-yellow-400 rounded text-xs">IOT</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-cyan-400 hover:text-white transition-colors">[DEMO]</button>
+                        <button class="text-pink-400 hover:text-white transition-colors">[SOURCE]</button>
+                    </div>
+                </div>
+                
+                <div class="hologram p-6 rounded-lg group hover:scale-105 transition-transform">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-3xl">🎮</div>
+                        <div class="text-xs text-green-400">[LIVE]</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">METAVERSE_ENGINE</h3>
+                    <p class="text-gray-300 mb-4">Immersive metaverse platform with blockchain assets, virtual reality integration, and cross-platform compatibility.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-blue-900 border border-blue-400 rounded text-xs">UNITY</span>
+                        <span class="px-2 py-1 bg-green-900 border border-green-400 rounded text-xs">BLOCKCHAIN</span>
+                        <span class="px-2 py-1 bg-purple-900 border border-purple-400 rounded text-xs">VR/AR</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-cyan-400 hover:text-white transition-colors">[DEMO]</button>
+                        <button class="text-pink-400 hover:text-white transition-colors">[SOURCE]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="orbitron text-4xl md:text-6xl font-bold text-center mb-16 neon-text">
+                &gt; ESTABLISH_CONNECTION()
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="hud-element p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">[COMMUNICATION_PROTOCOLS]</h3>
+                    <p class="text-lg mb-8 text-gray-300">
+                        Ready to interface with cutting-edge projects? My neural networks are optimized for 
+                        collaborative innovation and digital transformation initiatives.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="digital-border p-4 flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded flex items-center justify-center">
+                                📡
+                            </div>
+                            <div>
+                                <p class="font-semibold text-cyan-400">NEURAL_LINK</p>
+                                <p class="text-gray-400">jelly.lopez@cyberspace.net</p>
+                            </div>
+                        </div>
+                        <div class="digital-border p-4 flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded flex items-center justify-center">
+                                🔗
+                            </div>
+                            <div>
+                                <p class="font-semibold text-pink-400">PROFESSIONAL_NET</p>
+                                <p class="text-gray-400">linkedin.com/in/jellylopez</p>
+                            </div>
+                        </div>
+                        <div class="digital-border p-4 flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded flex items-center justify-center">
+                                💾
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-400">CODE_REPOSITORY</p>
+                                <p class="text-gray-400">github.com/jellylopez</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="terminal p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <span class="ml-4 text-cyan-400">contact@jelly-system:~$</span>
+                    </div>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-green-400">&gt; input_name:</label>
+                            <input type="text" class="w-full px-4 py-2 bg-black border border-cyan-400 rounded text-cyan-400 focus:border-pink-400 focus:outline-none transition-colors" placeholder="Enter your designation...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-green-400">&gt; input_email:</label>
+                            <input type="email" class="w-full px-4 py-2 bg-black border border-cyan-400 rounded text-cyan-400 focus:border-pink-400 focus:outline-none transition-colors" placeholder="your.neural.link@domain.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-green-400">&gt; input_subject:</label>
+                            <input type="text" class="w-full px-4 py-2 bg-black border border-cyan-400 rounded text-cyan-400 focus:border-pink-400 focus:outline-none transition-colors" placeholder="Mission parameters...">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-green-400">&gt; input_message:</label>
+                            <textarea rows="4" class="w-full px-4 py-2 bg-black border border-cyan-400 rounded text-cyan-400 focus:border-pink-400 focus:outline-none transition-colors" placeholder="Describe your digital vision..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full cyber-button px-8 py-3 rounded font-semibold">
+                            [TRANSMIT_MESSAGE]
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-black border-t border-cyan-500">
+        <div class="container mx-auto text-center">
+            <div class="orbitron text-2xl font-bold mb-4 neon-text glitch">
+                JELLY_MAE.EXE
+            </div>
+            <p class="text-gray-400 mb-6">Architecting the future through cybernetic innovation</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <button class="w-12 h-12 digital-border flex items-center justify-center hover:bg-cyan-900 transition-colors">
+                    💼
+                </button>
+                <button class="w-12 h-12 digital-border flex items-center justify-center hover:bg-cyan-900 transition-colors">
+                    💾
+                </button>
+                <button class="w-12 h-12 digital-border flex items-center justify-center hover:bg-cyan-900 transition-colors">
+                    📡
+                </button>
+            </div>
+            <p class="text-gray-500 text-sm">© 2024 Jelly Mae V. Lopez | All systems operational</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Digital Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        // Typewriter Effect
+        const typewriterText = [
+            "CYBERNETIC_DEVELOPER.EXE", 
+            "DATA_ANALYST.SYS", 
+            "AI_ARCHITECT.NET", 
+            "DIGITAL_INNOVATOR.IO"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function typeWriter() {
+            const currentText = typewriterText[textIndex];
+            const typewriterElement = document.getElementById('typewriter');
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typewriterText.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        typeWriter();
+        
+        // Particle System
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = '[TRANSMISSION_COMPLETE]';
+            button.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+                e.target.reset();
+            }, 3000);
+        });
+        
+        // Glitch Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const glitchElements = document.querySelectorAll('.glitch');
+            
+            glitchElements.forEach(element => {
+                if (scrolled > 100) {
+                    element.style.animationPlayState = 'running';
+                } else {
+                    element.style.animationPlayState = 'paused';
+                }
+            });
+        });
+        
+        // Random Neon Flicker
+        setInterval(() => {
+            const neonElements = document.querySelectorAll('.neon-text');
+            const randomElement = neonElements[Math.floor(Math.random() * neonElements.length)];
+            
+            randomElement.style.animation = 'none';
+            setTimeout(() => {
+                randomElement.style.animation = 'neonFlicker 2s infinite alternate';
+            }, 100);
+        }, 5000);
+        
+        // Hologram Scan Effect
+        document.querySelectorAll('.hologram').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.animation = 'none';
+                element.offsetHeight; // Trigger reflow
+                element.style.animation = null;
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9804f22954e1febc',t:'MTc1ODA3Mzc1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
